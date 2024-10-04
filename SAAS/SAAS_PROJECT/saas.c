@@ -24,14 +24,14 @@ void initializeReservations() {
     const int defaultAges[] = {22, 21, 43, 44, 31, 10, 36, 56, 47, 78};
     const char* defaultStatus[] = {"validated", "postponed", "cancelled", "pending", "validated", "postponed", "processed", "canceled", "pending", "validated"};
 
-    // Adding 3 default reservations
+    // Adding 10 default reservations
     for (int i = 0; i < 10; i++) {
         strcpy(res.names[res.num], defaultNames[i]);
         strcpy(res.phones[res.num], defaultPhones[i]);
         res.ages[res.num] = defaultAges[i];
         strcpy(res.status[res.num], defaultStatus[i]);
-        res.ids[res.num] = rand() % 1000;  // Generate a random ID between 0 and 999
-        res.num++;  // Increase the reservation count
+        res.ids[res.num] = rand() % 1000;  // generate a random ID between 0 and 999
+        res.num++;  // increase the reservation count
     }
 
     printf("Initialized 10 default reservations:\n");
@@ -41,7 +41,7 @@ void initializeReservations() {
     }
 }
 
-// Function to add a reservation
+//  add a reservation
 void addReservation() {
     if (res.num >= MAX) {
         printf("Reservations are out of order!\n");
@@ -292,7 +292,7 @@ int main() {
                 countByStatus();
                 break;
             case 10:
-                initializeReservations(); // Call to initialize default reservations
+                initializeReservations(); 
                 break;
             case 0:
                 printf("Exiting...\n");
