@@ -24,7 +24,7 @@ void initializeReservations() {
     const int defaultAges[] = {22, 21, 43, 44, 31, 10, 36, 56, 47, 78};
     const char* defaultStatus[] = {"validated", "postponed", "cancelled", "pending", "validated", "postponed", "processed", "canceled", "pending", "validated"};
 
-    // Adding 10 default reservations
+    // Adding 3 default reservations
     for (int i = 0; i < 10; i++) {
         strcpy(res.names[res.num], defaultNames[i]);
         strcpy(res.phones[res.num], defaultPhones[i]);
@@ -41,7 +41,7 @@ void initializeReservations() {
     }
 }
 
-//  to add a reservation
+// Function to add a reservation
 void addReservation() {
     if (res.num >= MAX) {
         printf("Reservations are out of order!\n");
@@ -49,7 +49,8 @@ void addReservation() {
     }
 
     printf("Enter name: ");
-    scanf("%s", res.names[res.num]);
+    getchar();  
+    scanf("%[^\n]s", res.names[res.num]); 
     printf("Enter phone: ");
     scanf("%s", res.phones[res.num]);
     printf("Enter age: ");
@@ -62,7 +63,7 @@ void addReservation() {
     printf("Reservation added successfully, ID: %d\n", res.ids[res.num - 1]);
 }
 
-//  to display all reservations
+// Function to display all reservations
 void displayReservations() {
     if (res.num == 0) {
         printf("0 reservations to display.\n");
@@ -78,7 +79,7 @@ void displayReservations() {
     }
 }
 
-//  to modify a reservation
+// Function to modify a reservation
 void modifyReservation() {
     int reference;
     printf("Enter the reservation ID to modify: ");
@@ -114,7 +115,7 @@ void modifyReservation() {
     }
 }
 
-//  to delete a reservation
+// Function to delete a reservation
 void deleteReservation() {
     int reference;
     printf("Enter reservation ID to delete: ");
@@ -143,7 +144,7 @@ void deleteReservation() {
     }
 }
 
-//  to search reservation by name
+// Function to search reservation by name
 void searchReservationByName() {
     char searchName[50];
     printf("Enter the name to search: ");
@@ -163,7 +164,7 @@ void searchReservationByName() {
     printf("No reservation found with that name.\n");
 }
 
-//  to search reservation by ID
+// Function to search reservation by ID
 void searchReservationByReference() {
     int reference;
     printf("Enter the reservation ID: ");
@@ -184,7 +185,7 @@ void searchReservationByReference() {
     printf("No reservation found with that ID.\n");
 }
 
-//  to calculate average age of reservations
+// Function to calculate average age of reservations
 void calculateAverageAge() {
     if (res.num == 0) {
         printf("No reservations to calculate average age.\n");
@@ -200,7 +201,7 @@ void calculateAverageAge() {
     printf("The average age is %.2f years.\n", averageAge);
 }
 
-//  to count people by age group
+// Function to count people by age group
 void countByAgeGroup() {
     int minors = 0, adults = 0, super_adults = 0;
 
@@ -219,7 +220,7 @@ void countByAgeGroup() {
     printf("Patients over 40: %d\n", super_adults);
 }
 
-//  to count reservations by status
+// Function to count reservations by status
 void countByStatus() {
     int validated = 0, postponed = 0, canceled = 0, processed = 0;
 
@@ -241,9 +242,9 @@ void countByStatus() {
     printf("Processed: %d\n", processed);
 }
 
-// Main 
+// Main function
 int main() {
-    srand(time(NULL)); //  random number generator
+    srand(time(NULL)); // Seed the random number generator
 
     int choice, sortBy;
     do {
@@ -257,7 +258,7 @@ int main() {
         printf("7. Calculate Average Age\n");
         printf("8. Count People by Age Group\n");
         printf("9. Count Reservations by Status\n");
-        printf("10. Initialize default reservations\n"); //new option for initialization
+        printf("10. Initialize default reservations\n"); // New option for initialization
         printf("0. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
